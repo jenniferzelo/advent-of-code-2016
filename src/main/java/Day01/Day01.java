@@ -25,19 +25,10 @@ public class Day01 {
         int x = 0;
         int y = 0;
         int degrees = 90;
-        ArrayList setList = new ArrayList();
-        ArrayList doubleVisit = new ArrayList();
 
         for(String step : instructions) {
             String direction = step.substring(0, 1);
             int distance = Integer.parseInt(step.substring(1, step.length()));
-            int[] set = new int[2];
-
-            set[0] = x;
-            set[1]  =y;
-            if (setList.equals(set)){
-                doubleVisit.add(set);
-            }
 
             if (direction.equals("L")) {
                 degrees += 90;
@@ -62,13 +53,10 @@ public class Day01 {
                     y -= distance;
                     break;
             }
-
-            setList.add(set);
         }
 
         int manhattanLength = Math.abs(x) + Math.abs(y);
         System.out.println("Part 1:\t" + manhattanLength + " blocks");
-        System.out.println("Part 2:\t");
 
     }
 }
