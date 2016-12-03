@@ -75,7 +75,9 @@ public class Day02 {
 
         int y = 1;
         int x = 1;
-        int[][] grid = {{1,2,3}, {4,5,6}, {7,8,9}};
+        int[][] grid = {{1,2,3},
+                        {4,5,6},
+                        {7,8,9}};
         String securityCode = "";
 
         for (String line : instructions) {
@@ -98,5 +100,51 @@ public class Day02 {
             securityCode += grid[x][y];
         }
         System.out.println("You come to the conclusion that the bathroom code is " + securityCode);
+
+        int[][] grid2 = {{0,0,0,0,0,0,0},
+                        {0,0,0,1,0,0,0},
+                        {0,0,2,3,4,0,0},
+                        {0,5,6,7,8,9,0},
+                        {0,0,'A','B','C',0,0},
+                        {0,0,0,'D',0,0,0},
+                        {0,0,0,0,0,0,0}};
+        String secondCode = "";
+
+        for (String line : instructions) {
+            for (int i = 0; i < line.length(); i++) {
+                switch (line.charAt(i)) {
+                    case 'U':
+                        if (grid2[x + 1].equals(0)) {
+                            break;
+                        } else {
+                            x = x == 0 ? x = 0 : x - 1;
+                        }
+                        break;
+                    case 'D':
+                        if (grid2[x - 1].equals(0)) {
+                            break;
+                        } else {
+                            x = x == 2 ? x = 2 : x + 1;
+                        }
+                        break;
+                    case 'L':
+                        if (grid2[y - 1].equals(0)) {
+                            break;
+                        } else {
+                            y = y == 0 ? y = 0 : y - 1;
+                        }
+                        break;
+                    case 'R':
+                        if (grid2[y + 1].equals(0)) {
+                            break;
+                        } else {
+                            y = y == 2 ? y = 2 : y + 1;
+                        }
+                        break;
+                }
+            }
+            securityCode += grid[x][y];
+        }
+        System.out.println("You come to the conclusion that the second bathroom code is " + secondCode);
     }
 }
