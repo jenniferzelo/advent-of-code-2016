@@ -9,7 +9,7 @@ import java.util.Scanner;
 /**
  * Created by Jeremy on 12/2/2016.
  *
---- Day 2: Bathroom Security ---
+ --- Day 2: Bathroom Security ---
 
  You arrive at Easter Bunny Headquarters under cover of darkness. However, you left in such a rush that you forgot to use the bathroom! Fancy office buildings like this one usually have keypad locks on their bathrooms, so you search the front desk for the code.
 
@@ -44,11 +44,11 @@ import java.util.Scanner;
 
  You finally arrive at the bathroom (it's a several minute walk from the lobby so visitors can behold the many fancy conference rooms and water coolers on this floor) and go to punch in the code. Much to your bladder's dismay, the keypad is not at all like you imagined it. Instead, you are confronted with the result of hundreds of man-hours of bathroom-keypad-design meetings:
 
-     1
-   2 3 4
+ 1
+ 2 3 4
  5 6 7 8 9
-   A B C
-     D
+ A B C
+ D
  You still start at "5" and stop when you're at an edge, but given the same instructions as above, the outcome is very different:
 
  You start at "5" and don't move at all (up and left are both edges), ending at 5.
@@ -75,9 +75,9 @@ public class Day02 {
 
         int y = 1;
         int x = 1;
-        int[][] grid = {{1,2,3},
-                        {4,5,6},
-                        {7,8,9}};
+        int[][] grid = {{1, 2, 3},
+                {4, 5, 6},
+                {7, 8, 9}};
         String securityCode = "";
 
         for (String line : instructions) {
@@ -87,7 +87,7 @@ public class Day02 {
                         x = x == 0 ? x = 0 : x - 1;
                         break;
                     case 'D':
-                        x = x == 2 ? x = 2: x + 1;
+                        x = x == 2 ? x = 2 : x + 1;
                         break;
                     case 'L':
                         y = y == 0 ? y = 0 : y - 1;
@@ -101,13 +101,13 @@ public class Day02 {
         }
         System.out.println("You come to the conclusion that the bathroom code is " + securityCode);
 
-        int[][] grid2 = {{0,0,0,0,0,0,0},
-                        {0,0,0,1,0,0,0},
-                        {0,0,2,3,4,0,0},
-                        {0,5,6,7,8,9,0},
-                        {0,0,'A','B','C',0,0},
-                        {0,0,0,'D',0,0,0},
-                        {0,0,0,0,0,0,0}};
+        int[][] grid2 = {{0, 0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 1, 0, 0, 0},
+                {0, 0, 2, 3, 4, 0, 0},
+                {0, 5, 6, 7, 8, 9, 0},
+                {0, 0, 'A', 'B', 'C', 0, 0},
+                {0, 0, 0, 'D', 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0}};
         String secondCode = "";
 
         for (String line : instructions) {
