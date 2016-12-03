@@ -82,32 +82,16 @@ public class Day02 {
             for (int i = 0; i < line.length(); i++) {
                 switch (line.charAt(i)) {
                     case 'U':
-                        if (x == 0) {
-                            x = 0;
-                        } else {
-                            x -= 1;
-                        }
+                        x = x == 0 ? x = 0 : x - 1;
                         break;
                     case 'D':
-                        if (x == 2) {
-                            x = 2;
-                        } else {
-                            x += 1;
-                        }
+                        x = x == 2 ? x = 2: x + 1;
                         break;
                     case 'L':
-                        if (y == 0) {
-                            y = 0;
-                        } else {
-                            y -= 1;
-                        }
+                        y = y == 0 ? y = 0 : y - 1;
                         break;
                     case 'R':
-                        if (y == 2) {
-                            y = 2;
-                        } else {
-                            y += 1;
-                        }
+                        y = y == 2 ? y = 2 : y + 1;
                         break;
                 }
             }
