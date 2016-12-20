@@ -17,9 +17,12 @@ public class Day08 {
 
         List<String> instructions = new ArrayList<String>();
         Scanner scanner = new Scanner(new File("src\\main\\java\\Day08\\input8.txt"));
-        while (scanner.hasNext()) {
-            instructions.add(scanner.nextLine());
-        }
+//        while (scanner.hasNext()) {
+//            instructions.add(scanner.nextLine());
+//        }
+
+        instructions.add("rect 3x2");
+        instructions.add("rotate column x=1 by 4");
 
         String[][] screen = new String[6][50];
 
@@ -30,7 +33,33 @@ public class Day08 {
             }
         }
 
-        
+        for(String instruction : instructions) {
+            if (instruction.startsWith("rect ")) {
+                String[] rect = instruction.replace("rect ", "").split("x");
+                System.out.println("rectangle " + rect[0] + " by " + rect[1]); //remove print
+                for(int y = 0; y < Integer.valueOf(rect[0]); y++) {
+                    for (int x = 0; x < Integer.valueOf(rect[1]); x++){
+                        screen[x][y] = "#";
+                    }
+                }
+            } else if (instruction.startsWith("rotate row y=")) {
+                instruction = instruction.replace("rotate row y=", "");
+                int row = Integer.valueOf(instruction.split(" by ")[0]);
+                int yValue = Integer.valueOf(instruction.split(" by ")[1]);
+                System.out.println("rotate row " + row + " value " + yValue); //remove print
+            } else if (instruction.startsWith("rotate column x=")) {
+                instruction = instruction.replace("rotate column x=", "");
+                int column = Integer.valueOf(instruction.split(" by ")[0]);
+                int xValue = Integer.valueOf(instruction.split(" by ")[1]);
+                System.out.println("rotate column " + column + " value " + xValue); //remove print
+                for (int x = 5; x > 0; x--) {
+                    try {
+                        screen[(x + xValue) % 6][column] = screen[x][column];
+//                        screen[x][column] = ".";
+                    } catch (Exception e){}
+                }
+            }
+        }
 
 
         //print array
@@ -40,6 +69,5 @@ public class Day08 {
             }
             System.out.println();
         }
-
     }
 }
